@@ -44,7 +44,12 @@ apply from: rootProject.file("gradle/dockerjib.gradle")
 dependencies {
     compile "org.apereo.cas:cas-server-webapp${project.appServer}:${casServerVersion}"
     compile "org.apereo.cas:cas-server-support-json-service-registry:${project.'cas.version'}"
-    // Other CAS dependencies/modules may be listed here...
+
+    // this is used for delegating authentication.
+    compile "org.apereo.cas:cas-server-support-pac4j-webflow:${project.'cas.version'}"
+
+    // this lets us use JWT instead of the default CAS protocol
+    compile "org.apereo.cas:cas-server-support-token-webflow:${project.'cas.version'}"
 }
 
 tasks.findByName("jibDockerBuild")
